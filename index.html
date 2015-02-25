@@ -1,0 +1,194 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Jacobi Method Calculator</title>
+  <meta name="description" content="Online Jacobi Method">
+  <meta name="author" content="Tiff Zhang">
+
+  <link href='http://fonts.googleapis.com/css?family=Alegreya+Sans+SC:100' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Carrois+Gothic+SC' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Lusitana' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="js/sylvester.js"></script>
+  <script src="js/Chart.js/Chart.min.js"></script>
+  <script src="js/matrixwrapper.js"></script>
+  <script src="js/js.js"></script>
+  <!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+<body>
+
+<ul id="navigation" class="tabs">
+    <li><a href="#calculator_tab">Jacobi Calculator</a></li>
+    <li><a href="#assignment_tab">Math 2605 Simulation</a></li>
+    <li><a href="#essay_tab">Reflective Essay</a></li>
+    <li><a href="#code_tab">Source Code</a></li>
+</ul>
+
+<div id="container">
+    <div id="calculator_tab">
+        <div id="calculator_input" class="slide">
+            <h1>Jacobi's Method Calculator/Simulation</h1>
+            <p>
+                Jacobi's Algorithm is a method for finding the eigenvalues of nxn symmetric matrices by diagonalizing them. The algorithm works by diagonalizing 2x2 submatrices of the parent matrix until the sum of the non diagonal elements of the parent matrix is close to zero. 
+            </p>
+            <p>
+                To try out Jacobi's Algorithm, enter a symmetric square matrix below or generate one.
+            </p>
+            <center>
+            <div class="error" id="calc_error"><noscript>You need Javascript enabled for this site to work. </noscript></div>
+            <textarea id="matrix_input"></textarea>
+            <div id="additional_options">
+                <small>Generate matrix of size <input type="number" value="5" name="size" id="matrix_size" size="2" maxlength="2" /> 
+                with numbers from <input type="number" maxlength="3" name="min_number" id="min_number" size="2" value="-10" /> to
+                    <input type="number" maxlength="3" name="max_number" id="max_number" size="2" value="10" /></small>
+                <input type="submit" id="generate_matrix" value="Generate!" />
+                <br />Use delimiter 
+                    <select id="delimiter" name="delimiter">
+                        <option value=" ">Space</option>
+                        <option value=",">Comma</option>
+                        <option value=";">Semicolon</option>
+                    </select>
+            </div>
+            
+            <small id="last_calculation_link"><a href="#calculator_simulation" class="calculator_advance">View results of last calculation &gt</a></small>
+            <input type="submit" name="calculate" id="calculate_submit" value="Calculate &gt;" class="big_button" />
+
+            </center>
+        </div>
+        <div id="calculator_simulation" class="slide">
+            <h1>Simulation Results</h1>
+            <a href="#calculator_input" class="calculator_advance">&lt; Go back to calculator input</a>
+            <h2>Your Original Matrix</h2>
+            <div id="starting_matrix" class="long block">
+                You haven't tried to do a calculation yet. ):
+            </div>
+            <div id="iteration_area"></div>
+            <div class="block">
+            <a href="#calculator_input" class="calculator_advance">&lt; Go back to calculator input</a>
+            </div>
+        </div>
+    </div>
+    <div id="assignment_tab">
+        <div id="assignment_intro" class="slide">
+            <h1>Math 2605: The Significance of Sorting</h1>
+            <p>
+                For my Math 2605 class (Calculus III for CS Majors), we had to compare the efficiency of two different variants of the Jacobi Method. Normally, as part of the Jacobi Method, you find the largest absolute value of the off diagonal entries to find out which submatrix you should diagonalize (This makes sense because you want to systematically remove the off diagonal values that are furthest from zero!). 
+            </p>
+            <p>
+                However, iterating through all of the off diagonal entries of a matrix is really time consuming when the matrix is large, so we considered an alternate scenario: What if you iterated through the off diagonal entries without figuring out which one was the largest? 
+            </p>
+            <p>
+                Here, you can see the results of my simulation. Click the button below to see an example of what happens if you don't sort through the off diagonal values of your matrix while iterating. 
+            </p>
+            <center>
+            <input type="submit" name="simulation_start" id="simulation_submit" value="Start Simulation &gt;" class="big_button" />
+            </center>
+        </div>
+        <div id="assignment_simulation" class="slide">
+            <h1>Removing the Sorting Step</h1>
+            <a href="#assignment_intro" class="assignment_advance">&lt; Go back to simulation start</a>
+            <ul id="simulation_navigation" class="long block simulation_tabs"></ul>
+            <div id="simulation_matrices" class="block long">
+                You haven't tried to run a simulation yet! 
+            </div>
+        </div>
+    </div>
+    <div id="essay_tab">
+        <h1>Conclusions from this Project</h1>
+        <p>
+            Project by Tiff Zhang, Created for Math 2605 at Georgia Tech, <a href="pdf/JacobiEssay.pdf">Essay available as PDF</a>
+        </p>
+        <p>
+            The purpose of this assignment was to help me better understand the process behind the Jacobi Algorithm by implementing the algorithm in a 
+            web application. In the process of debugging my program, I corrected a few of my misunderstandings about the Jacobi Algorithm, and in the process 
+            of completeing the comparison required by the assignment, I came to understand the importance of the sorting step in the algorithm. 
+        </p>
+        <h2>A Brief Explanation of Jacobi's Algorithm</h2>
+        <p>
+            The purpose of Jacobi's Algorithm is to the find the eigenvalues of any mxm symmetric matrix. In general, two by two symmetric matrices will always 
+            have real eigenvaleus and those eigenvalues can be found by using the quadratic equation. Larger symmetric matrices don't have any sort of explicit 
+            equation to find their eigenvalues, so instead Jacobi's algorithm was devised as a set of iterative steps to find the eigenvalues of any symmetric matrix. 
+        </p>
+        <p>
+            Jacobi's Algorithm takes advantage of the fact that 2x2 symmetric matrices are easily diagonalizable by taking 2x2 submatrices from the parent, finding an 
+            orthogonal rotation matrix that diagonalizes them and expanding that rotation matrix into the size of the parent matrix to partially diagonalize the parent. 
+            More specifically, the basic steps for Jacobi's Algorithm would be laid out like such:
+        </p>
+        <ol>
+            <li>Start with a mxm symmetric matrix A</li>
+            <li>Find the off-diagonal item in A with the largest magnitude</li>
+            <li>Create a 2x2 submatrix B based on the indices of the largest off-diagonal value</li>
+            <li>Find an orthogonal matrix U that diagonalizes B</li>
+            <li>Create a rotation matrix G by expanding U onto an identity matrix of mxm</li>
+            <li>Multiple G_transpose * A * G to get a partially diagonlized version of A</li>
+            <li>Repeat all steps on your result from Step 7 until all of the off-diagonal entries are approximately 0</li>
+        </ol>
+        <p>
+            So, as long as you know Jacobi's Algorithm you candiagonalize any symmetric matrix! But, especially for large matrices, Jacobi's Algorithm can take a very long time 
+            with a lot of iterations, so it's something that we program computers to do. And that's why I made this program here: to have a computer do the heavy lifting 
+            of iterating through matrices. 
+        </p>
+        <h2>Convergence and "Sorting"</h2>
+        <p>
+            A problem with the Jacobi's Algorithm is that it can get stuck in an infinite loop if you try to get all of the off-diagonal entries 
+            to exactly zero. So, when we do the Jacobi's Algorithm, we have to set a margin of error, a stopping point for when the matrix is close enough 
+            to being diagonal. For this project, the stopping rule we used was sum(offB^2) &lt; 10e-9. Thus, when the program reached a point where the square of 
+            all the off diagonal entries added up is less than 10e-9, it would stop. 
+        </p>
+        <p>
+            Other than picking an error though, we can change specific details in our implementation of Jacobi's Algorithm. Step 2 from my earlier list, where 
+            you find the largest off-diagonal entry of the matrix, is not strictly necessary because you can still diagonalize all of the parts of a matrix if you 
+            just iterate through the off-diagonal values. 
+        </p>
+        <p>
+            That's what my simulation in the "Math 2605 Simulation" tab was all about. Starting with one set of the same 10 symmetric matrices, 
+            I ran two different variants of the Jacobi Algorithm: the first using the sorting step to find the largest off-diagonal value and the second 
+            just iterating through the values. 
+        </p>
+        <p>
+            When I graphed the results, I found that for 5x5 matrices, Jacobi's Algorithm with the sorting step tended to converge in between 
+            20-30 iterations while the algorithm without the sorting step tended to converge in about 30-40 iterations. When I ran similar tests on 
+            matrices of larger sizes, I found that Jacobi's Algorithm without the sorting step generally tended to take approximately 30% more iterations. 
+        </p>
+        <h2>Conclusions</h2>
+        <p>
+            It's clear overall that the sorting step in Jacobi's Algorithm causes the matrix to converge on a diagonal in less iterations. But the reason 
+            we looked at the sorting step was that it can be slow for large matrices; after all, you have to go through all of the off-diagonal entries and find which 
+            one is largest. 
+        </p>
+        <p>
+            However, the iterations of the Jacobi Algorithm saved by the sorting step take time to process also. Since the sorting step significantly 
+            reduces the number of iterations of Jacobi's Algorithm needed to achieve a diagonal, it's clear that it's pretty useful. And it makes sense; by systematically 
+            applying Jacobi's algorithm to the off-diagonal elements furthest from zero, you're going to get all of the off-diagonal elements to approach zero the 
+            fastest. 
+        </p>
+        <p>
+            So, in conclusion, this project shows that Jacobi's Algorithm is a rather handy way for a computer to figure out the diagonals of any symmetric matrices. 
+            With the diagonal of a matrix, we can find its eigenvalues, and from there, we can do many more calculations. 
+        </p>
+    </div>
+    <div id="code_tab">
+        <h1>Source Code and More</h1>
+        <p>
+            This website is coded in Javascript and based on an assignment created by Eric Carlen for my Math 2605 class at Georgia Tech. 
+        </p>
+        <p>
+            <a href="pdf/JacobiProject.pdf">For reference, the original assignment PDF by Eric Carlen can be found here</a>
+        </p>
+        <p>
+            <a href="http://tiffzhang.com/math/jacobi.zip">The source code of this website can be downloaded in a zipped folder here</a>
+        </p>
+        <p>
+            This project utilizes the <a href="http://sylvester.jcoglan.com/">Sylvester.js</a> library to help with matrix math 
+            and <a href="http://www.chartjs.org/">ChartJS</a> for graphing
+        </p>
+    </div>
+</div>
+</body>
+</html>

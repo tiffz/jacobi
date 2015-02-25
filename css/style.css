@@ -1,0 +1,226 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+body {
+    background: #eee;
+    width: 100%;
+    min-height: 100%;
+    color: #222;
+    font-family: 'Lusitana', serif;
+    font-size: 18px;
+    line-height: 27px;
+}
+
+a, a:link, a:active, a:visited {
+    text-decoration: none;
+    color: #555;
+}
+
+a:hover {
+    color: #4488ff;
+}
+
+input[type="submit"], select {
+    background: none;
+}
+
+input[type="number"] {
+    max-width: 50px;
+}
+
+#navigation {
+    width: 310px;
+    height: 100%;
+    min-height: 100%;
+    position: fixed;
+    background: #bbb;
+    float: left;
+}
+
+#navigation li {
+    float: left;
+    width: 100%;
+    height: 71px;
+}
+
+#navigation li .active {
+    background: #999;
+}
+
+#navigation li a, #navigation li a:link, #navigation li a:visited {
+    font-family: 'Carrois Gothic SC', sans-serif;
+    width: 90%;
+    padding: 0 5%;
+    font-size: 24px;
+    line-height: 70px;
+    display: block;
+    color: #222;
+    border-bottom: 1px #888 solid;
+}
+
+#navigation li a:hover {
+    background: #888;
+}
+
+#container {
+    float: left;
+    margin-left: 330px;
+    min-width: 470px;
+    max-width: 720px;
+    width: 58%;
+}
+
+#container h1 {
+    font-size: 30px;
+    line-height: 50px;
+    margin: 20px 0;
+}
+
+#container h2 {
+    font-size: 20px;
+    line-height: 30px;
+    margin: 5px 0;
+}
+
+#container p {
+    margin-bottom: 20px;
+}
+
+#matrix_input {
+    width: 85%;
+    margin: 5px;
+    height: 200px;
+}
+
+input {
+    cursor: pointer;
+    font-size: 18px;
+    margin: 4px 3px;
+}
+
+.big_button {
+    height: 50px;
+    min-width: 150px;
+    font-size: 30px;
+    padding: 5px 10px;
+    font-family: 'Carrois Gothic SC', sans-serif;
+}
+
+.error {
+    color: #ff0000;
+}
+
+div .error {
+    height: 20px;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.bracket {
+    height: 100%;
+    float: left;
+    overflow: hidden;
+    width: 50px;
+    font-family: 'Alegreya Sans SC', sans-serif;
+    margin-top: -25px;
+    padding-bottom: 25px;
+}
+
+.left {
+    float: left;
+    text-align: left;
+}
+
+.right {
+    float: right;
+    direction: rtl;
+}
+
+.matrix {
+    margin-top: 25px;
+}
+
+.matrix .matrix_entry {
+    float: left;
+    text-align:center;
+    width: 50px;
+    height: 50px;
+    font-size: 16px;
+}
+
+.big_matrix  .matrix_entry {
+    float: left;
+    text-align:center;
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+    line-height: 20px;
+}
+
+.matrix_entry {
+    overflow: hidden;
+}
+
+.big_matrix .bracket {
+    width: 80px;
+}
+
+.simulation_chart {
+    height: 300px;
+    width: 600px;
+}
+
+ol {
+    margin: 10px 30px 20px;
+}
+
+small, .small {
+    font-size: 14px;
+    line-height: 18px;
+}
+
+.block {
+    float: left;
+    text-align: center;
+    margin-bottom: 10px;
+    min-width: 33%;
+}
+
+.long {
+    width: 100%;
+}
+
+.simulation_tabs {
+    height: 25px;
+    font-size: 14px;
+    line-height: 25px;
+    display: block;
+    float: left;
+    width: 100%;
+    margin: 2px 0;
+}
+
+.simulation_tabs li {
+    float: left;
+    height: 100%;
+    display: block;
+    min-width: 70px;
+}
+
+.simulation_tabs li .active {
+    background: #999;
+}
+
+.simulation_tabs li a, .simulation_tabs li a:link, .simulation_tabs li a:visited {
+    font-family: 'Carrois Gothic SC', sans-serif;
+    padding: 0 5%;
+    display: block;
+    color: #222;
+}
+
+.simulation_tabs li a:hover {
+    background: #888;
+}
